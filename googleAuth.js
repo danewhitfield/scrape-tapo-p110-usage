@@ -14,8 +14,21 @@ const cron = require('node-cron');
 const spreadsheetId = process.env.SPREADSHEET_ID;
 const sheetTitle = getCurrentMonthAndYearTitle();
 
+const credentials = {
+	type: process.env.type,
+	project_id: process.env.project_id,
+	private_key_id: process.env.private_key_id,
+	private_key: process.env.private_key,
+	client_email: process.env.client_email,
+	client_id: process.env.client_id,
+	auth_uri: process.env.auth_uri,
+	token_uri: process.env.token_uri,
+	auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
+	client_x509_cert_url: process.env.client_x509_cert_url,
+	universe_domain: process.env.universe_domain,
+};
+
 const authorize = async () => {
-	const credentials = JSON.parse(fs.readFileSync(process.env.CREDS));
 	const authClient = await auth.fromJSON(credentials);
 	authClient.scopes = ['https://www.googleapis.com/auth/spreadsheets'];
 	return authClient;
@@ -86,6 +99,6 @@ async function runScript() {
 }
 
 // Schedule the script to run on the last day of every month at 23:59
-cron.schedule('59 23 L * *', () => {
+cron.schedule('59 23 28-31 * *', () => {
 	runScript();
 });
