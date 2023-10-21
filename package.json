@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "google-auth-library": "^9.1.0",
+    "googleapis": "^128.0.0",
+    "node-cron": "^3.0.2",
+    "node-rsa": "^1.1.1",
+    "nodemon": "^3.0.1",
+    "tp-link-tapo-connect": "^1.0.8"
+  },
+  "name": "p110",
+  "version": "1.0.0",
+  "main": "p100.js",
+  "scripts": {
+    "start": "nodemon googleAuth.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
